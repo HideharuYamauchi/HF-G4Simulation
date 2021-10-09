@@ -33,13 +33,16 @@
 #include "G4SpinDecayPhysics.hh"
 #include "G4StepLimiterPhysics.hh"
 #include "G4EmStandardPhysics.hh"
+
+#include "G4SystemOfUnits.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-F05PhysicsList::F05PhysicsList() : G4VModularPhysicsList() 
-{
-    RegisterPhysics(new G4SpinDecayPhysics());
-    RegisterPhysics(new G4StepLimiterPhysics());
-    RegisterPhysics(new G4EmStandardPhysics());
+F05PhysicsList::F05PhysicsList() : G4VModularPhysicsList() {
+  defaultCutValue = 1000.*mm;
+  
+  RegisterPhysics(new G4SpinDecayPhysics());
+  RegisterPhysics(new G4StepLimiterPhysics());
+  RegisterPhysics(new G4EmStandardPhysics());
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -48,21 +51,18 @@ F05PhysicsList::~F05PhysicsList() {;}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void F05PhysicsList::ConstructParticle()
-{
-    G4VModularPhysicsList::ConstructParticle();
+void F05PhysicsList::ConstructParticle(){
+  G4VModularPhysicsList::ConstructParticle();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void F05PhysicsList::ConstructProcess()
-{
-    G4VModularPhysicsList::ConstructProcess();
+void F05PhysicsList::ConstructProcess(){
+  G4VModularPhysicsList::ConstructProcess();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void F05PhysicsList::SetCuts()
-{
-    SetCutsWithDefault();
+void F05PhysicsList::SetCuts(){
+  SetCutsWithDefault();
 }

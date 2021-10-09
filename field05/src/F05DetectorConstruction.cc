@@ -533,7 +533,7 @@ G4VPhysicalVolume* F05DetectorConstruction::Construct(){
     = new G4Tubs("Vacuum",//its name 
                  0.0,
                  kapton_diameter*0.5*mm,
-                 kapton_thickness, // vacuum_z*0.5
+                 vacuum_z*0.5,
                  0*deg,360*deg);//size
   
   fLogicVacuum

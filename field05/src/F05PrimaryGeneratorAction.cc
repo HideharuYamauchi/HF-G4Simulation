@@ -71,15 +71,15 @@ void F05PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //this function is called at the begining of event
   //
 
-  G4double Pmu = 517.6*MeV;
-  //G4double Pmu = 27.4*MeV;
+  //G4double Pmu = 517.6*MeV;
+  G4double Pmu = 27.4*MeV;
   G4double mu_mass = 105.658*MeV;
   G4double Emu = std::sqrt(Pmu*Pmu + mu_mass*mu_mass);
   G4double Kmu = Emu - mu_mass;
 
   G4double x0=rand->Gaus(0.00*mm,34.*mm);
   G4double y0=rand->Gaus(0.00*mm,30.*mm);
-  G4double z0 =  -1800.00*m;
+  G4double z0 =  -1800.00*mm;
 
   fParticleGun->SetParticleEnergy(Kmu);
   fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
