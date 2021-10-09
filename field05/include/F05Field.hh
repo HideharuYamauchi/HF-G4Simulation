@@ -37,6 +37,14 @@
 #include "globals.hh"
 #include "G4ElectroMagneticField.hh"
 
+#include "G4ElectroMagneticField.hh"
+#include "DetectorConfiguration.hh"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow"
+#include "TFile.h"
+#include "TTree.h"
+#pragma GCC diagnostic pop
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class F05Field : public G4ElectroMagneticField
@@ -54,6 +62,16 @@ public:
   /// field is really field[6]: Bx,By,Bz,Ex,Ey,Ez.
   /// point[] is in global coordinates: x,y,z,t.
   virtual void GetFieldValue(const G4double Point[4], G4double* Bfield) const;
+
+  TFile* file;
+  TTree* tree;
+  Int_t entries;
+  Float_t x; // because of tree, we have to use Float_t, not G4double                                                                                                                                     
+  Float_t z;
+  Float_t Bx_data;
+  Float_t By_data;
+  Float_t Bz_data;
+  const G4double map_center=5355.;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
